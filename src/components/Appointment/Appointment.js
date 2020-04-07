@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 import './Appointment.css'
+import DatePicker from '../DatePicker/DatePicker';
+import ServiceList from '../ServiceList/ServiceList';
 
 const Appointment = () => {
     const [date, setDate] = useState(new Date())
+    
+    const handleDate = d => {
+        setDate(d)
+    }
+
+    
     return (
         <div className='container'>
-            <h1>Appointment</h1>
-            {console.log(date.toDateString())}
-            <Calendar
-                onChange={d => setDate(d)}
-                value={date}
-                minDate={new Date()}
-                maxDate={new Date(2020,11,31)}
-                minDetail={'year'}
-            />
+            <h1 className="text-info">Appointment</h1>
+            
+            <DatePicker date={date} handleDate={handleDate}></DatePicker>
+            
+            <ServiceList date={date}></ServiceList>
         </div>
     );
 };
