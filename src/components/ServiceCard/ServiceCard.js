@@ -7,7 +7,9 @@ const ServiceCard = (props) => {
                 <div className="card-body">
                     <h5 className="card-title text-info">{props.title}</h5>
                     <p className="card-text"><strong>{props.time}</strong></p>
-                    <button className="btn btn-info">Book Appointment</button>
+                    <button className="btn btn-info" 
+                        onClick={()=>props.openModal(props.title)}>Book Appointment
+                    </button>
                 </div>
             </div>
         </div>

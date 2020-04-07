@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ServiceCard from '../ServiceCard/ServiceCard';
+import ApppointmentForm from '../AppointmentForm/ApppointmentForm';
 
 const ServiceList = (props) => {
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [appointmentInfo, setAppointmentInfo] = useState({});
+    
+    const openModal = (title) => {
+        setAppointmentInfo({title})
+        setModalIsOpen(true)
+    }
+
+    const closeModal = () => {
+        setModalIsOpen(false)
+    }
+
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
 
     const services = [
@@ -49,11 +62,16 @@ const ServiceList = (props) => {
                         <ServiceCard 
                             title={el.title}
                             time={el.time}
+                            openModal={openModal}
                         ></ServiceCard>
                     </div>)
                 }
             </div>
-            
+            <ApppointmentForm
+                modalIsOpen={modalIsOpen}
+                closeModal={closeModal}
+                appointmentInfo={appointmentInfo}
+            ></ApppointmentForm>
         </div>
     );
 };
