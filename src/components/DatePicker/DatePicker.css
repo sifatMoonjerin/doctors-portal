@@ -1,8 +1,9 @@
 .react-calendar{
     border: none;
     border-radius: 10px;
-    box-shadow: 10px 10px 50px lightgrey;
+    box-shadow: 5px 5px 25px lightgrey;
     overflow: hidden;
+    
 }
 
 .react-calendar__navigation{
