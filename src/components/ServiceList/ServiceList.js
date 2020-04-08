@@ -56,7 +56,7 @@ const ServiceList = (props) => {
     //     {
     //         title: 'Cosmetic Dentistry',
     //         time: '09:00 pm - 10:00 pm',
-    //         startTime: '09:00 AM'
+    //         startTime: '09:00 PM'
     //     }
     // ]
 
@@ -83,9 +83,9 @@ const ServiceList = (props) => {
             <div className="row">
                 {
                     services.map(el => <div 
-                    className="col-md-4 d-flex justify-content-center">
+                        key={el._id} 
+                        className="col-md-4 d-flex justify-content-center">
                         <ServiceCard
-                            key={el._id} 
                             title={el.title}
                             time={el.time}
                             startTime={el.startTime}

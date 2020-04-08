@@ -21,7 +21,8 @@ const ApppointmentForm = (props) => {
     }
 
     const handleSubmit = (e) => {
-        const patientDetails = {
+        e.preventDefault()
+        const appointmentDetails = {
             name,
             email,
             phone,
@@ -31,13 +32,31 @@ const ApppointmentForm = (props) => {
             day: date.getDate(),
             month: date.getMonth(),
             year: date.getFullYear(),
-            visited: false
+            visited: false,
+            action: 'pending'
         }
-        console.log(patientDetails)
-        setName('')
-        setEmail('')
-        setPhone('')
-        props.closeModal()
+        // console.log(appointmentDetails)
+        fetch('http://localhost:4200/bookAppointment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(appointmentDetails)
+        })
+            .then(res => res.json())
+            .then(appointment => {
+                alert(`
+                    Patient Name: ${name}
+                    Appointment ID: ${appointment._id}
+                    Date: ${date.toDateString()}
+                    Time: ${startTime}
+                `)
+                setName('')
+                setEmail('')
+                setPhone('')
+                props.closeModal()
+            })
+        
     }
 
     return (
