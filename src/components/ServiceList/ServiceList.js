@@ -6,8 +6,8 @@ const ServiceList = (props) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [appointmentInfo, setAppointmentInfo] = useState({});
     
-    const openModal = (title) => {
-        setAppointmentInfo({title})
+    const openModal = (title,time,startTime) => {
+        setAppointmentInfo({title,time,startTime,date: props.date})
         setModalIsOpen(true)
     }
 
@@ -62,6 +62,8 @@ const ServiceList = (props) => {
                         <ServiceCard 
                             title={el.title}
                             time={el.time}
+                            startTime={el.startTime}
+                            date={props.date}
                             openModal={openModal}
                         ></ServiceCard>
                     </div>)
