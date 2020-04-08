@@ -28,10 +28,8 @@ const ApppointmentForm = (props) => {
             phone,
             service: title,
             startTime,
-            date,
-            day: date.getDate(),
-            month: date.getMonth(),
-            year: date.getFullYear(),
+            appointmentDate: date.toDateString(),
+            prescription: '',
             visited: false,
             action: 'pending'
         }
@@ -54,9 +52,8 @@ const ApppointmentForm = (props) => {
                 setName('')
                 setEmail('')
                 setPhone('')
-                props.closeModal()
             })
-        
+            props.closeModal()
     }
 
     return (

@@ -2,7 +2,7 @@ import React from 'react';
 import './SideMenu.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarCheck, faLaptop } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarCheck, faLaptop, faHome, faHospital } from '@fortawesome/free-solid-svg-icons'
 
 const SideMenu = () => {
     return (
