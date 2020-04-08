@@ -8,7 +8,7 @@ const ServiceList = (props) => {
     const [appointmentInfo, setAppointmentInfo] = useState({});
     
     useEffect(()=>{
-        fetch('http://localhost:4200/services')
+        fetch('https://warm-journey-10486.herokuapp.com/services')
         .then(res => res.json())
         .then(data => {
             setServices(data)
@@ -61,7 +61,7 @@ const ServiceList = (props) => {
     // ]
 
     // const updateServices = () => {
-    //     fetch('http://localhost:4200/addServices',{
+    //     fetch('https://warm-journey-10486.herokuapp.com/addServices',{
     //         method: 'POST',
     //         headers: {
     //           'Content-Type': 'application/json'

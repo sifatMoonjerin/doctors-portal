@@ -36,7 +36,7 @@ const ApppointmentForm = (props) => {
             action: 'pending'
         }
         // console.log(appointmentDetails)
-        fetch('http://localhost:4200/bookAppointment', {
+        fetch('https://warm-journey-10486.herokuapp.com/bookAppointment', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
