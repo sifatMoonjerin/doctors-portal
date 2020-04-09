@@ -39,8 +39,8 @@ const AllAppRow = (props) => {
                             View
                         </button>:<button 
                         onClick={()=>setModalIsOpen(true)}
-                        className="btn btn-faded">
-                            Not Added
+                        className="btn btn-secondary">
+                            Add Now
                         </button>
                 }
             </TableCell>

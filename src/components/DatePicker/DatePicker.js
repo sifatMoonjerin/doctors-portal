@@ -1,6 +1,6 @@
 import React from 'react';
 import Calendar from 'react-calendar';
-import DatePickerBanner from '../../images/Mask Group 1.png';
+import DatePickerBanner from '../../images/MaskGroup1.png';
 import 'react-calendar/dist/Calendar.css';
 import './DatePicker.css';
 
