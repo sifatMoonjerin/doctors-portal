@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const VisitButton = (props) => {
     const [visited, setVisited] = useState(props.visited)
     const handleVisit = (id) => {
-        fetch('http://localhost:4200/dailyAppointment/updateVisit', {
+        fetch('https://warm-journey-10486.herokuapp.com/dailyAppointment/updateVisit', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
