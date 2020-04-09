@@ -6,6 +6,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import VisitButton from '../VisitButton/VisitButton';
 import './DailyAppTable.css';
   
@@ -30,7 +31,8 @@ const DailyAppTable = (props) => {
                     </TableRow>
                     </TableHead>
                     <TableBody>
-                    {props.dailyAppointment.map((appointment) => (
+                    
+                    {!props.isLoading && props.dailyAppointment.map((appointment) => (
                         <TableRow key={appointment.name}>
                         <TableCell component="th" scope="row">
                             {appointment.name}
@@ -47,8 +49,11 @@ const DailyAppTable = (props) => {
                         </TableRow>
                     ))}
                     </TableBody>
+                    
                 </Table>
+                
             </TableContainer>
+            {props.isLoading && <CircularProgress className='mt-3' disableShrink />}
             </div>
         </div>
     );

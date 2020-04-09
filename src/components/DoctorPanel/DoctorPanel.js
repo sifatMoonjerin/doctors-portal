@@ -15,13 +15,13 @@ const DoctorPanel = () => {
             <Router>
                 <SideMenu></SideMenu>
                 <Switch>
-                    <Route path={`/doctorPanel/dashboard`}>
+                    <Route path='/doctorPanel/dashboard'>
                         <DashBoard></DashBoard>
                     </Route>
-                    <Route path={`/doctorPanel/appointmentList`}>
+                    <Route path='/doctorPanel/appointmentList'>
                         <AppointmentList></AppointmentList>
                     </Route>
-                    <Route exact path={`/doctorPanel`}>
+                    <Route exact path='/doctorPanel'>
                         <DashBoard></DashBoard>
                     </Route>
                 </Switch>

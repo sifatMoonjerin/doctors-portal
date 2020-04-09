@@ -1,14 +1,17 @@
 import React,{ useState, useEffect } from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import AllAppTable from '../AllAppTable/AllAppTable';
 import CounterCard from '../CounterCard/CounterCard';
 
 const DashBoard = () => {
     const [allAppointments, setAllAppointments] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=>{
         fetch('https://warm-journey-10486.herokuapp.com/allAppointments')
         .then(res => res.json())
         .then(data => {
+            setIsLoading(false)
             setAllAppointments(data)
         })
     },[])
@@ -64,8 +67,8 @@ const DashBoard = () => {
     }
 
     return (
-        <div>
-            <h3 className="text-info">Dashboard</h3>
+        <div className='container'>
+            <h4 className="text-info mt-3 mb-1">Dashboard</h4>
             <div className="row">
                 <div className="col-md-3 d-flex justify-content-center">
                     <CounterCard data={getPendingToday()}></CounterCard>
@@ -81,7 +84,12 @@ const DashBoard = () => {
                 </div>
             </div>
             
-            <AllAppTable allAppointments={allAppointments}></AllAppTable>
+            {
+                isLoading ? <CircularProgress className='mt-3' disableShrink>
+                </CircularProgress>:<AllAppTable allAppointments={allAppointments}>
+                </AllAppTable>
+            }
+            
         </div>
     );
 };

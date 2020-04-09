@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import ServiceCard from '../ServiceCard/ServiceCard';
 import ApppointmentForm from '../AppointmentForm/ApppointmentForm';
 
@@ -6,11 +7,13 @@ const ServiceList = (props) => {
     const [services, setServices] = useState([])
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [appointmentInfo, setAppointmentInfo] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
     
     useEffect(()=>{
         fetch('https://warm-journey-10486.herokuapp.com/services')
         .then(res => res.json())
         .then(data => {
+            setIsLoading(false)
             setServices(data)
         })
     },[])
@@ -27,38 +30,7 @@ const ServiceList = (props) => {
 
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
 
-    // const services = [
-    //     {
-    //         title: 'Teeth Orthodontics',
-    //         time: '08:00 am - 09:00 am',
-    //         startTime: '08:00 AM'
-    //     },
-    //     {
-    //         title: 'Cosmetic Dentistry',
-    //         time: '10:00 am - 11:30 am',
-    //         startTime: '10:00 AM'
-    //     },
-    //     {
-    //         title: 'Teeth Cleaning',
-    //         time: '05:00 pm - 06:30 pm',
-    //         startTime: '05:00 PM'
-    //     },
-    //     {
-    //         title: 'Cavity Protection',
-    //         time: '07:00 pm - 08:00 pm',
-    //         startTime: '07:00 PM'
-    //     },
-    //     {
-    //         title: 'Teeth Orthodontics',
-    //         time: '08:00 pm - 09:00 pm',
-    //         startTime: '08:00 PM'
-    //     },
-    //     {
-    //         title: 'Cosmetic Dentistry',
-    //         time: '09:00 pm - 10:00 pm',
-    //         startTime: '09:00 PM'
-    //     }
-    // ]
+    
 
     // const updateServices = () => {
     //     fetch('https://warm-journey-10486.herokuapp.com/addServices',{
@@ -75,11 +47,13 @@ const ServiceList = (props) => {
     // }
 
     return (
-        <div>
+        <div className='mb-5'>
             <h3 className="text-info m-4">
                 Available Appointments on {props.date.toLocaleDateString(undefined, options)}
             </h3>
             {/* <button onClick={updateServices}>add services</button> */}
+            {isLoading && <CircularProgress className='mt-3' disableShrink>
+                </CircularProgress>}
             <div className="row">
                 {
                     services.map(el => <div 

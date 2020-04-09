@@ -6,8 +6,10 @@ import 'react-calendar/dist/Calendar.css';
 const AppointmentList = () => {
     const [date, setDate] = useState(new Date())
     const [dailyAppointment, setDailyAppointment] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(()=>{
+        setIsLoading(true)
         fetch('https://warm-journey-10486.herokuapp.com/dailyAppointment/' + date.toDateString())
         .then(res => res.json())
         .then(data => {
@@ -15,6 +17,7 @@ const AppointmentList = () => {
                 alert('Server Error! Reload the page.')
             } else{
                 setDailyAppointment(data)
+                setIsLoading(false)
             }
             
         })
@@ -35,7 +38,8 @@ const AppointmentList = () => {
                 </div>
                 <div className="col-md-7">
                     <DailyAppTable 
-                        date={date} 
+                        date={date}
+                        isLoading={isLoading} 
                         dailyAppointment={dailyAppointment}>
                     </DailyAppTable>
                 </div>
