@@ -10,7 +10,7 @@ const AllAppRow = (props) => {
 
     const handlePrescription = (e) => {
         console.log(prescription)
-        fetch('http://localhost:4200/updatePrescription', {
+        fetch('https://warm-journey-10486.herokuapp.com/updatePrescription', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

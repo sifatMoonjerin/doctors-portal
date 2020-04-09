@@ -6,7 +6,7 @@ const DashBoard = () => {
     const [allAppointments, setAllAppointments] = useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:4200/allAppointments')
+        fetch('https://warm-journey-10486.herokuapp.com/allAppointments')
         .then(res => res.json())
         .then(data => {
             setAllAppointments(data)
