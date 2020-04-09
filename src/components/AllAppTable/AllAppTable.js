@@ -1,4 +1,5 @@
 import React from 'react';
+import AllAppRow from '../AllAppRow/AllAppRow';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -108,9 +109,11 @@ const AllAppTable = (props) => {
         <Table className={classes.table} aria-label="custom pagination table">
             <TableHead>
                     <TableRow>
-                        <TableCell>Name</TableCell>
-                        <TableCell align="right">Schedule</TableCell>
-                        <TableCell align="right">Action</TableCell>
+                        <TableCell>Date</TableCell>
+                        <TableCell align="right">Time</TableCell>
+                        <TableCell align="right">Name</TableCell>
+                        <TableCell align="right">Contact</TableCell>
+                        <TableCell align="right">Prescription</TableCell>
                     </TableRow>
             </TableHead>
           <TableBody>
@@ -118,13 +121,10 @@ const AllAppTable = (props) => {
               ? props.allAppointments.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : props.allAppointments
             ).map((row) => (
-              <TableRow key={row.name}>
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="right">{row.email}</TableCell>
-                <TableCell align="right">{row.startTime}</TableCell>
-              </TableRow>
+                <AllAppRow
+                    key={row.name}
+                    data={row}
+                ></AllAppRow>
             ))}
   
             {emptyRows > 0 && (
